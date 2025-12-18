@@ -1,9 +1,3 @@
-"""
-Update this file to implement the following already declared methods:
-- add_member: Should add a member to the self._members list
-- delete_member: Should delete a member from the self._members list
-- get_member: Should return a member from the self._members list
-"""
 
 class FamilyStructure:
     def __init__(self, last_name):
@@ -39,14 +33,14 @@ class FamilyStructure:
         self._next_id += 1
         return generated_id
 
-
+    # Añade 1 miembro al array incluyendo id y apellido
     def add_member(self, member):
         member["id"] = self._generate_id()
         member["last_name"] = self.last_name
         self._members.append(member)
         return member
 
-
+    # Elimina 1 miembro del array usando id
     def delete_member(self, id):
         for member in self._members:
             if member["id"] == id:
@@ -54,13 +48,13 @@ class FamilyStructure:
                 return True
         return False
 
-
+    # Realiza una busqueda del id del miembro a localizar
     def get_member(self, id):
         for member in self._members:
             if member["id"] == id:
                 return member
         return None
 
-
+    # Devuelve el array de objetos
     def get_all_members(self):
         return self._members

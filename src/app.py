@@ -6,7 +6,6 @@ from flask import Flask, request, jsonify, url_for
 from flask_cors import CORS
 from utils import APIException, generate_sitemap
 from datastructures import FamilyStructure
-# from models import Person
 
 
 app = Flask(__name__)
@@ -29,13 +28,13 @@ def sitemap():
     return generate_sitemap(app)
 
 
-# GET /members → obtener todos los miembros
+# GET /members -> obtener todos los miembros
 @app.route('/members', methods=['GET'])
 def get_all_members():
     return jsonify(jackson_family.get_all_members()), 200
 
 
-# GET /members/<int:member_id> → obtener un solo miembro
+# GET /members/<int:member_id> -> obtener un solo miembro
 @app.route('/members/<int:member_id>', methods=['GET'])
 def get_single_member(member_id):
     member = jackson_family.get_member(member_id)
@@ -46,7 +45,7 @@ def get_single_member(member_id):
     return jsonify(member), 200
 
 
-# POST /members → añadir un miembro
+# POST /members -> añadir un miembro
 @app.route('/members', methods=['POST'])
 def add_member():
     body = request.get_json()
@@ -64,7 +63,7 @@ def add_member():
     return jsonify(member), 200
 
 
-# DELETE /members/<int:member_id> → eliminar miembro
+# DELETE /members/<int:member_id> -> eliminar miembro
 @app.route('/members/<int:member_id>', methods=['DELETE'])
 def delete_member(member_id):
     deleted = jackson_family.delete_member(member_id)
